@@ -75,7 +75,6 @@ Route::get('productToevoegen', function () {
 Route::get('productview', 'productviewcontroller@overview');
 Route::get('productedit/{id}', 'productviewcontroller@edit');
 
-
 Route::post('verify', 'ProductController@add');
 Route::get('productToevoegen', 'lastAdded@returnLastAdded');
 

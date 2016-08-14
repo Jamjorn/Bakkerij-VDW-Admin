@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 
 
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Products;
+use App\Http\Controllers\lastAdded;
 use DB;
 
 
@@ -46,7 +46,10 @@ DB::insert('insert into products (categories, name, type, rating, warning, path)
    // 'postNL'=>input::get('postNL'),
    // 'waarschuwing'=>input::get('waarschuwing'),
     //'aanbieding'=>input::get('aanbieding')
-return view('productToevoegen');
+  $lastAdded = (new lastAdded)->returnLastAdded();
+  return $lastAdded;
+
+
   }
 
 

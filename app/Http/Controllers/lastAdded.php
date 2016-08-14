@@ -17,8 +17,8 @@ class lastAdded extends Controller
 	//$products = Products::Select('products')->orderBy('created_at', 'desc', 'limit', '3')->first();
 		
 
-		$latest = DB::select( DB::raw("SELECT * FROM products ORDER BY created_at asc limit 3") ); 
-       return view('productToevoegen', compact('latest', $latest));
+		$latest = DB::select( DB::raw("SELECT * FROM products ORDER BY created_at desc limit 3") ); 
+        return view('productToevoegen', compact('latest', $latest));
 	}
 
 

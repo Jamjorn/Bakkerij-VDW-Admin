@@ -153,25 +153,26 @@ function readBox(){
   	  		 <div class="dbWhiteSpaceSmall col-xs-12"></div>
 
 
+           @if($latest !== '')
 
-           @foreach($latest as $latest)
-  	  		 <div class="recentToegevoegBorderBot col-xs-11 no-margin" >
-  	  		 	<div class="RecentToegevoegdOne col-xs-4 no-margin">  <img src="{{ $latest->path }}" alt="" class="RecentToegevoegdOne col-xs-12 no-padding" /></div>
-  	  		 	<div class="col-xs-3 no-margin"> {{ $latest->name }}</div>
-              <div class="col-xs-1 no-margin"> &euro;{{ $latest->price }}</div>
-  	  		 	<div class="col-xs-4 no-margin">
-  	  		 		<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
+             @foreach($latest as $latest)
+        	  		<div class="recentToegevoegBorderBot col-xs-11 no-margin" >
+        	  		 	<div class="RecentToegevoegdOne col-xs-4 no-margin">  <img src="{{ $latest->path }}" alt="" class="RecentToegevoegdOne col-xs-12 no-padding" /></div>
+        	  		 	<div class="col-xs-3 no-margin"> {{ $latest->name }}</div>
+                    <div class="col-xs-1 no-margin"> &euro;{{ $latest->price }}</div>
+        	  		 	<div class="col-xs-4 no-margin">
+        	  		 		<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button>
+      					 <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
 
 
-  	  		 	</div>
-  	  		 	 <div class="dbWhiteSpaceSmall col-xs-12"></div>
-  	  		 </div>
-            <div class="col-xs-1"></div>
+        	  		 	</div>
+        	  		 	 <div class="dbWhiteSpaceSmall col-xs-12"></div>
+        	  		 </div>
+                  <div class="col-xs-1"></div>
 
-      <div class="dbWhiteSpaceSmall col-xs-12"></div>
-                @endforeach
-
+                  <div class="dbWhiteSpaceSmall col-xs-12"></div>
+            @endforeach
+           @endif
 
   	  	
 

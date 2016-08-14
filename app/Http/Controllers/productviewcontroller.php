@@ -32,9 +32,8 @@ public function overview()
   public function edit($id){
 
   	$row = DB::table('products')->where('id', $id) ->first();
-
-
   	return view('productAanpassen')->with('row', $row);
+  	
   }
 
 

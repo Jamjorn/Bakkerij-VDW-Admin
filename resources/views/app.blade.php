@@ -8,18 +8,18 @@
     <link href='https://fonts.googleapis.com/css?family=Bitter&Open Sans&Oswald' rel='stylesheet' type='text/css'>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/mystyle.css') }}">
 
     <!-- JS Files -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url('/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/js/bootstrap.min.js') }}"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
    
     <!-- include Angular Files -->
-    <script src="js/controllers/mainCtrl.js"></script> <!-- load our controller -->
-    <script src="js/bakkerij.js"></script> <!-- load our application -->
+    <script src="{{ url('/js/controllers/mainCtrl.js') }}"></script> <!-- load our controller -->
+    <script src="{{ url('/js/bakkerij.js') }}"></script> <!-- load our application -->
 
 </head>
 

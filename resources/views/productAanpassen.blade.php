@@ -67,25 +67,25 @@ function readBox(){
   	<div class="dbWhiteSpaceBig col-xs-12"></div>
 
 
-  	<div class="col-xs-3 no-padding"><span class="productOverviewDif">Product Toevoegen</span>
+  	<div class="col-xs-3 no-padding"><span class="productOverviewDif">Product Wijzigen</span>
           <div class="col-xs-11 col-xs-push-1">
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
-  	<form action="verify" role="form" method='post'>
-    <input name='naam' value="{{ $row->name }}" type ='tekst' placeholder ="Naam" ng-model="naam" required>
+  	<form action="verify" method="post">
+    <input name="naam" type ="text" ng-model="naam" ng-init="naam='{{ $row->name }}'" placeholder="Naam" required />
     <br>
     <br>
-    <input name='prijs' value="{{ $row->price }}" type ='number' placeholder ='Prijs' ng-model="prijs" required>
+    <input name="prijs" ng-model="prijs" value='{{ $row->price }}' ng-init="prijs='{{ $row->price }}'" type="number" placeholder="Prijs" required />
     <br>
     <br>
-    <input name='beschrijving' value="{{ $row->categories }}" type ='tekst' placeholder ='Beschrijving' ng-model="beschrijving" required>
+    <input name='beschrijving' ng-model="beschrijving" ng-init="beschrijving='{{ $row->categories }}'" type ='tekst' placeholder ='Beschrijving' />
     <br>
     <br><label for="chkPassport"> PostNL
             <input type="checkbox"id="chkPassport" onclick="javascript:checkAll();ShowHideDiv(this)">           
               </label>
     <br>
     <br>
-    <input name='waarschuwwing'value=<?php  if(!$row->warning){echo "nee";}else{  echo $row->warning;  }?> type ='tekst' placeholder ='waarschuwing' ng-model="warning" >
+    <input name='waarschuwwing' ng-init="warning='{{ $row->warning }}'" type ='tekst' placeholder ='waarschuwing' ng-model="warning" >
     <br>
     <br>
     <input name='aanbieding' type ='tekst' placeholder ='Prijs Aanbieding' ng-model="prijsAanbieding">
@@ -138,41 +138,7 @@ function readBox(){
 
 <div class="col-xs-1"></div>
 
-  	  	<div class="col-xs-6 no-padding"><span class="productOverview">Recent Toegevoegde Producten</span>
-
-  	  		 <div class="dbWhiteSpaceBig col-xs-12"></div>
-
-  	  		 	<div class="formProductToevoegen col-xs-11">
-  	  		 		<div class="col-xs-4"><p>Afbeelding</p></div>
-  	  		 		<div class="col-xs-3"><p>Productnaam</p></div>
-              <div class="col-xs-1"><p>Prijs</p></div>
-  	  		 		<div class="col-xs-4"><p>Controls</p></div>
-  	  		 	</div>
-  	  		 	<div class="col-xs-1"></div>
-
-  	  		 <div class="dbWhiteSpaceSmall col-xs-12"></div>
-
-
   	  	
-
-
-
-  	  		 	</div>
-  	  		 	 <div class="dbWhiteSpaceSmall col-xs-12"></div>
-  	  		 </div>
-
-  	  		   <div class="col-xs-12 no-margin">
-	  	  		  	<div class="col-xs-10 no-margin">
-	  	  		  	</div>
-	  	  		  	<div class="col-xs-2 no-margin">
-	  	  		  		<div class="productview col-xs-12">
-	  	  		  			<a href="productview" class="btn btn-success btn-lg btn-block hugeAdmin">Bekijk productlijst</a>
-	  	  		  		</div>
-	  	  		  	</div>
-	  	  		      
-          
-  	  		  </div>
-  	  		
 
   	  	
 </div>
