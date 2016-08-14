@@ -13,7 +13,7 @@ class WebshopController extends Controller
     
 	public function initializeWebshop()
 	{
-		$products = Products::where('category','LIKE', '%Specialiteiten%')->get();
+		$products = Products::where('categories','LIKE', '%Specialiteiten%')->get();
 		return view('webshop', compact('products', $products));
 	}
 

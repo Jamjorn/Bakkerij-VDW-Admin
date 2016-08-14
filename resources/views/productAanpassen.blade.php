@@ -72,20 +72,20 @@ function readBox(){
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
   	<form action="verify" role="form" method='post'>
-    <input name='naam' type ='tekst' placeholder ="Naam" ng-model="naam" required>
+    <input name='naam' value="{{ $row->name }}" type ='tekst' placeholder ="Naam" ng-model="naam" required>
     <br>
     <br>
-    <input name='prijs' type ='number' placeholder ='Prijs' ng-model="prijs" required>
+    <input name='prijs' value="{{ $row->price }}" type ='number' placeholder ='Prijs' ng-model="prijs" required>
     <br>
     <br>
-    <input name='beschrijving' type ='tekst' placeholder ='Beschrijving' ng-model="beschrijving" required>
+    <input name='beschrijving' value="{{ $row->categories }}" type ='tekst' placeholder ='Beschrijving' ng-model="beschrijving" required>
     <br>
     <br><label for="chkPassport"> PostNL
             <input type="checkbox"id="chkPassport" onclick="javascript:checkAll();ShowHideDiv(this)">           
               </label>
     <br>
     <br>
-    <input name='waarschuwwing' type ='tekst' placeholder ='waarschuwing' ng-model="warning" >
+    <input name='waarschuwwing'value=<?php  if(!$row->warning){echo "nee";}else{  echo $row->warning;  }?> type ='tekst' placeholder ='waarschuwing' ng-model="warning" >
     <br>
     <br>
     <input name='aanbieding' type ='tekst' placeholder ='Prijs Aanbieding' ng-model="prijsAanbieding">
@@ -151,26 +151,6 @@ function readBox(){
   	  		 	<div class="col-xs-1"></div>
 
   	  		 <div class="dbWhiteSpaceSmall col-xs-12"></div>
-
-
-
-           @foreach($latest as $latest)
-  	  		 <div class="recentToegevoegBorderBot col-xs-11 no-margin" >
-  	  		 	<div class="RecentToegevoegdOne col-xs-4 no-margin">  <img src="{{ $latest->path }}" alt="" class="RecentToegevoegdOne col-xs-12 no-padding" /></div>
-  	  		 	<div class="col-xs-3 no-margin"> {{ $latest->name }}</div>
-              <div class="col-xs-1 no-margin"> &euro;{{ $latest->price }}</div>
-  	  		 	<div class="col-xs-4 no-margin">
-  	  		 		<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
-
-
-  	  		 	</div>
-  	  		 	 <div class="dbWhiteSpaceSmall col-xs-12"></div>
-  	  		 </div>
-            <div class="col-xs-1"></div>
-
-      <div class="dbWhiteSpaceSmall col-xs-12"></div>
-                @endforeach
 
 
   	  	

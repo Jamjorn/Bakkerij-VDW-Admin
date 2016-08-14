@@ -369,7 +369,7 @@ p{
     font-size: 12px;
 }
 .whiteLine{
-    height: 6em;
+    height: 1.5em;
 
 }
 .yellowLine{
@@ -2149,11 +2149,20 @@ background-image: url('../img/webshop.jpg');
 
 
 .productOverview{
-    margin-top: 1em;
-    margin-left: 2em;
+    margin-top: 1em;    
      font-family: "Bitter", "Helvetica Neue", Helvetica, Arial, sans-serif;
      color: black;
-     font-size: 2em;
+     font-size: 1.5em;
+     font-weight: bold;
+     margin-left: 1em;
+
+}
+.productOverviewDif{
+    margin-top: 1em;
+    margin-left: 1.9em;
+    font-family: "Bitter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     color: black;
+     font-size: 1.5em;
      font-weight: bold;
 
 }
@@ -2175,7 +2184,7 @@ background-image: url('../img/webshop.jpg');
      color: black;
      font-size: 1.1em;
      margin-top: 0.4em;
-     margin-left: 0.8em;
+;
     
   
 }
@@ -2241,20 +2250,7 @@ height: 2em;
 width: 2em;
 border-radius: 0.3em;
 }
-.editTwo{
-background-color: #28CE72;
-height: 1em;
-width: 1em;
-border-radius: 0.2em;
-}
-.editThree{
-background-color: #28CE72;
-height: 1.6em;
-width: 1.6em;
-border-radius: 0.2em;
-margin-bottom: -0.2em;
 
-}
 .editMargin{
     margin-top: 5em;
 
@@ -2460,30 +2456,24 @@ height: 24em;
 
 }
 .RecentToegevoegdOne{
-      background-image: url('../img/402.jpg');
+
   background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;   
 
-  height: 9em;
+  height: 10em;
 
 }
-.RecentToegevoegdTwo{
-      background-image: url('../img/232.jpg');
+.RecentToegevoegTwo{
+
   background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;   
 
-  height: 9em;
+  width: 15em;
 
 }
 
-.RecentToegevoegdThree{
-      background-image: url('../img/166.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;   
-
-  height: 9em;
-
-}
 .recentToegevoegBorderBot{
     border-bottom-color: rgba(156, 156, 156, 1);
     border-bottom-style: solid;
@@ -2609,7 +2599,7 @@ margin-right: 2em;
 border-radius: 0.9em;
 border-style: solid;
 border-color: #9F9F9F;
-margin-top: 7em;
+margin-top: 2em;
 }
 
 .previewtext p{

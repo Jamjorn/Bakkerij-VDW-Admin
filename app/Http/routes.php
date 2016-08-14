@@ -61,15 +61,23 @@ Route::get('productview', function () {
     return view('productview');
 });
 Route::get('media', function () {
-    return view('media');
 });
 Route::get('edit', function () {
     return view('edit');
 });
+
+Route::get('productAanpassen', function () {
+    return view('productAanpassen');
+});
 Route::get('productToevoegen', function () {
     return view('productToevoegen');
 });
+Route::get('productview', 'productviewcontroller@overview');
+Route::get('productedit/{id}', 'productviewcontroller@edit');
 
+
+Route::post('verify', 'ProductController@add');
+Route::get('productToevoegen', 'lastAdded@returnLastAdded');
 
 Route::get('contact', 'ContactController@showForm');
 Route::post('contact', 'ContactController@handleFormPost');
