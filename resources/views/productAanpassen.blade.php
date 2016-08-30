@@ -71,11 +71,11 @@ function readBox(){
           <div class="col-xs-11 col-xs-push-1">
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
-  	<form action="verify" method="post">
+  	<form action="verifyUpdate/{{ $row->id }}" method="post">
     <input name="naam" type ="text" ng-model="naam" ng-init="naam='{{ $row->name }}'" placeholder="Naam" required />
     <br>
     <br>
-    <input name="prijs" ng-model="prijs" value='{{ $row->price }}' ng-init="prijs='{{ $row->price }}'" type="number" placeholder="Prijs" required />
+    <input name="prijs" ng-model="prijs" value='{{ $row->price }}' ng-init="prijs='{{ $row->price }}'" type="number" placeholder="Prijs" required min="0" max="9999" step="0.01" size="4" />
     <br>
     <br>
     <input name='beschrijving' ng-model="beschrijving" ng-init="beschrijving='{{ $row->categories }}'" type ='tekst' placeholder ='Beschrijving' />

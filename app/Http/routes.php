@@ -76,6 +76,9 @@ Route::get('productview', 'productviewcontroller@overview');
 Route::get('productedit/{id}', 'productviewcontroller@edit');
 
 Route::post('verify', 'ProductController@add');
+Route::post('/productedit/verifyUpdate/{id}', 'ProductController@addUpdate');
+Route::get('/delete/{id}', 'ProductController@delete');
+Route::get('verify/delete/{id}', 'ProductController@delete');
 Route::get('productToevoegen', 'lastAdded@returnLastAdded');
 
 Route::get('contact', 'ContactController@showForm');

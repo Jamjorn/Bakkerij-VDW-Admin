@@ -60,6 +60,9 @@ function readBox(){
 </script>
 
 
+
+
+
   <div class="contentWapper col-xs-10 col-xs-push-2 no-padding">
 
 
@@ -71,11 +74,11 @@ function readBox(){
           <div class="col-xs-11 col-xs-push-1">
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
-  	<form action="verify" role="form" method='post'>
+  	<form action="verify" role="form" method='post' ecypte="multipart/form-data">
     <input name='naam' type ='tekst' placeholder ="Naam" ng-model="naam" required>
     <br>
     <br>
-    <input name='prijs' type ='number' placeholder ='Prijs' ng-model="prijs" required>
+    <input name='prijs' type ='number' placeholder ='Prijs' ng-model="prijs" required min="0" max="9999" step="0.01" size="4" >
     <br>
     <br>
     <input name='beschrijving' type ='tekst' placeholder ='Beschrijving' ng-model="beschrijving" required>
@@ -91,7 +94,13 @@ function readBox(){
     <input name='aanbieding' type ='tekst' placeholder ='Prijs Aanbieding' ng-model="prijsAanbieding">
     <br>
     <br>
-    <input type="submit">
+    <input name="file"  type='file' id="file"/>
+        <br>
+
+    
+        
+        
+    <input type="submit" value="Verzenden" name="submit">
   </form>
 
 					</div>
@@ -99,17 +108,32 @@ function readBox(){
   	</div>
 <div class='col-xs-2'><span class="productOverview">Product Overview</span>
   <div class=" previewScreen col-xs-12">
-  	<div class="afbeeldingInvoegenPreview col-xs-12 no-padding no-margin">
-  	  			<div class="overlayWhitePreview col-xs-12 no-padding no-margin">
-  	  				
-
-  	  		</div>
-  	  	</div>
+<script type="text/javascript">
+                 function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#file").change(function(){
+        readURL(this);
+    });
+            </script>
+                <div class="afbeeldingInvoegenPreview">
+ <img id="blah" src="/inventory_images/media.png" alt="your image" height="100" />
+</div>
+  	  			
   	<div class="col-xs-12"><p>Productnaam: </p>	<div class="recentToegevoegBorderBot col-xs-12 no-margin" ></div></div>
   	<div class="col-xs-12"><span class="prevText"><p ng-bind="naam"></p><span></div>
   
   	<div class="col-xs-12"><p>Prijs:</p> <div class="recentToegevoegBorderBot col-xs-12 no-margin" ></div></div>
-  	<div class="col-xs-12"><span class="prevText">	<p ng-bind="prijs"></p><span></div>
+  	<div class="col-xs-12"><span class="prevText"> <p ng-bind="prijs">&#8364; </p><span></div>
   	
 
   	<div class="col-xs-12"><p>Beschrijving:</p> <div class="recentToegevoegBorderBot col-xs-12 no-margin" ></div></div>
@@ -161,8 +185,9 @@ function readBox(){
         	  		 	<div class="col-xs-3 no-margin"> {{ $latest->name }}</div>
                     <div class="col-xs-1 no-margin"> &euro;{{ $latest->price }}</div>
         	  		 	<div class="col-xs-4 no-margin">
-        	  		 		<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button>
-      					 <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
+        	  		 		<a href="<?php echo 'productedit/'. $latest->id  ?>"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
+      					
+                <a href="<?php echo 'delete/'. $latest->id  ?>" > <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button></a>
 
 
         	  		 	</div>
