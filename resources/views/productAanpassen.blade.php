@@ -71,7 +71,7 @@ function readBox(){
           <div class="col-xs-11 col-xs-push-1">
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
-  	<form action="verifyUpdate/{{ $row->id }}" method="post">
+  	<form action="verifyUpdate/{{ $row->id }}" method="post" enctype="multipart/form-data">
     <input name="naam" type ="text" ng-model="naam" ng-init="naam='{{ $row->name }}'" placeholder="Naam" required />
     <br>
     <br>
@@ -91,20 +91,39 @@ function readBox(){
     <input name='aanbieding' type ='tekst' placeholder ='Prijs Aanbieding' ng-model="prijsAanbieding">
     <br>
     <br>
-    <input type="submit">
+     <input name="file"  type='file' id="file"/>
+     <br>
+     <br>
+    <input  type="submit" value="Verzenden" name="submit">
   </form>
 
 					</div>
 
   	</div>
-<div class='col-xs-2'><span class="productOverview">Product Overview</span>
+    <div class="col-xs-1"></div>
+<div class='col-xs-2 '><span class="productOverview">Product Overview</span>
   <div class=" previewScreen col-xs-12">
-  	<div class="afbeeldingInvoegenPreview col-xs-12 no-padding no-margin">
-  	  			<div class="overlayWhitePreview col-xs-12 no-padding no-margin">
-  	  				
-
-  	  		</div>
-  	  	</div>
+    <script type="text/javascript">
+                 function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#file").change(function(){
+        readURL(this);
+    });
+            </script>
+     <div class="afbeeldingInvoegenPreview">
+  <img id="blah" src="/{{ $row->path }}" alt="your image" height="100" />
+</div>
+  	  	
   	<div class="col-xs-12"><p>Productnaam: </p>	<div class="recentToegevoegBorderBot col-xs-12 no-margin" ></div></div>
   	<div class="col-xs-12"><span class="prevText"><p ng-bind="naam"></p><span></div>
   
@@ -135,8 +154,10 @@ function readBox(){
 							        </div> <div class="previewtext col-xs-9" id="previewtext" style="display: none"><p>PostNL bezorging</p></div>
   </div>
   </div>
-
-<div class="col-xs-1"></div>
+  <div class="col-xs-1"></div>
+<div class="col-xs-4"><div class="productview col-xs-12">
+                    <a href="/productview" class="btn btn-success btn-lg btn-block hugeAdmin">Bekijk productlijst</a>
+                  </div></div>
 
   	  	
 

@@ -74,7 +74,7 @@ function readBox(){
           <div class="col-xs-11 col-xs-push-1">
             <div class="dbWhiteSpaceBig col-xs-12"></div>
 
-  	<form action="verify" role="form" method='post' ecypte="multipart/form-data">
+  	<form action="verify" role="form" method='post' enctype="multipart/form-data">
     <input name='naam' type ='tekst' placeholder ="Naam" ng-model="naam" required>
     <br>
     <br>
@@ -94,7 +94,7 @@ function readBox(){
     <input name='aanbieding' type ='tekst' placeholder ='Prijs Aanbieding' ng-model="prijsAanbieding">
     <br>
     <br>
-    <input name="file"  type='file' id="file"/>
+    <input name="file"  type='file' id="file" required/>
         <br>
 
     
@@ -187,7 +187,7 @@ function readBox(){
         	  		 	<div class="col-xs-4 no-margin">
         	  		 		<a href="<?php echo 'productedit/'. $latest->id  ?>"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
       					
-                <a href="<?php echo 'delete/'. $latest->id  ?>" > <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button></a>
+                <a href="<?php echo 'verify/delete/'. $latest->id  ?>" > <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button></a>
 
 
         	  		 	</div>
