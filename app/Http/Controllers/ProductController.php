@@ -18,11 +18,11 @@ use App\Products;
 use App\Http\Controllers\lastAdded;
 use DB;
 
-
+use File;
 
 class ProductController extends BaseController {
 
-  public function add(){
+  public function add(Request $request){
 
   $naam = Input::get('naam');
   $prijs = Input::get('prijs');
@@ -30,9 +30,11 @@ class ProductController extends BaseController {
   $postNL = Input::get('PostNL');
   $waarschuwwing = Input::get('waarschuwwing');
   $prijsaanbieding = Input::get('prijsaanbieding');
- $file = Input::get('file');
+  $file = Input::get('file');
 
 
+
+       
   
 /*
   $data = array('naam' => $naam,
@@ -45,7 +47,11 @@ class ProductController extends BaseController {
 return  $data;
 */
 DB::insert('insert into products (categories, name, price, type, rating, warning, path) values (?, ?, ?, ?, ?, ?, ?)', 
-	array('EmptyFromController', $naam, $prijs,'standaard', '1', $waarschuwwing, "inventory_images/$file"));
+	array('EmptyFromController', $naam, $prijs,'standaard', '1', $waarschuwwing, "inventory_images/".$_FILES['file']['name']));
+
+     $imageName = time().'.'. $request->file->getClientOriginalExtension();
+        $request->file->move(public_path('inventory_images'), $_FILES['file']['name']);
+
 
 
 //$file = Input::file('imagePath');
@@ -65,7 +71,10 @@ DB::insert('insert into products (categories, name, price, type, rating, warning
   }
 
 
-  public function addUpdate($id)
+
+
+
+  public function addUpdate($id, Request $request)
   {
 
   $naam = Input::get('naam');
@@ -74,25 +83,53 @@ DB::insert('insert into products (categories, name, price, type, rating, warning
   $postNL = Input::get('PostNL');
   $waarschuwwing = Input::get('waarschuwwing');
   $prijsaanbieding = Input::get('prijsaanbieding');
+   $file = Input::get('file');
+
+    DB::table('products')
+            ->where('id', $id);
 
 
   //DB::insert('UPDATE products SET price = $prijs WHERE id = 442')
+ if (Input::hasFile('file')) {
 
-  DB::table('products')
+      $image = DB::table('products') ->where('id', $id) ->first(); 
+  //DB::insert('UPDATE products SET price = $prijs WHERE id = 442')
+File::delete($image->path);
+
+ DB::table('products')
             ->where('id', $id)
-            ->update(['price' => $prijs, 'name' => $naam] );
+            ->update(['price' => $prijs, 'name' => $naam,'categories' => $beschrijving, 'warning' => $waarschuwwing, 'path' => "inventory_images/".$_FILES['file']['name']]  );
+             $request->file->move(public_path('inventory_images'), $_FILES['file']['name']);
+ 
+  }else
+  {
+
+    DB::table('products')
+            ->where('id', $id)
+            ->update(['price' => $prijs, 'name' => $naam,'categories' => $beschrijving, 'warning' => $waarschuwwing ]);
+  }
+
+
 
               $row = DB::table('products')->where('id', $id) ->first();
+
+
+
     //return view('productAanpassen')->with('row', $row)
     return redirect()->back()->with('row', $row);
 }
 
+
+
+
+
+
 public function delete($id)
   {
 
-
+    $image = DB::table('products') ->where('id', $id) ->first(); 
   //DB::insert('UPDATE products SET price = $prijs WHERE id = 442')
-
+File::delete($image->path);
   DB::table('products')
             ->where('id', $id)
             ->delete();
