@@ -22,7 +22,7 @@ use File;
 
 class ProductController extends BaseController {
 
-  public function add(Request $request){
+  public function create(Request $request){
 
   $naam = Input::get('naam');
   $prijs = Input::get('prijs');

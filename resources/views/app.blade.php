@@ -14,12 +14,19 @@
     <!-- JS Files -->
     <script type="text/javascript" src="{{ url('/js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('/js/bootstrap.min.js') }}"></script>
+    
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
    
     <!-- include Angular Files -->
     <script src="{{ url('/js/controllers/mainCtrl.js') }}"></script> <!-- load our controller -->
     <script src="{{ url('/js/bakkerij.js') }}"></script> <!-- load our application -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <script src="http://position-absolute.com/creation/print/jquery.print"></script>
+           
+
 
 </head>
 

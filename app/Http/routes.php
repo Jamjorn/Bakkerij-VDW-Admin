@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -83,6 +84,63 @@ Route::get('productToevoegen', 'lastAdded@returnLastAdded');
 
 Route::get('contact', 'ContactController@showForm');
 Route::post('contact', 'ContactController@handleFormPost');
+
+
+/*----------------------------------------------------------------*/
+
+Route::get('create', function () {
+    return view('productCRUD');
+});
+
+Route::get('CRUDcreate', function () {
+    return view('CRUDcreate');
+});
+Route::get('createBestelling', function () {
+    return view('createBestelling');
+});
+Route::get('bestellingen', function () {
+    return view('bestellingen');
+});
+Route::get('klant', function () {
+    return view('klant');
+});
+Route::get('createKlant', function () {
+    return view('createKlant');
+});
+Route::get('printpreviewBig', function () {
+    return view('printpreviewBig');
+});
+
+Route::get('productCRUD/create', function () {
+    return view('productCRUD');
+});
+Route::get('/productCRUD/{id}/edit', 'productCRUDcontroller@edit');
+Route::post('/updateCRUD/{id}', 'productCRUDcontroller@addUpdate');
+Route::get('/deleteCrud/{id}', 'productCRUDcontroller@deleteCrud');
+
+Route::get('/bestellingen/{id}/edit', 'bestellingenController@bestellingEdit');
+Route::post('/updateBestelling/{id}', 'bestellingenController@bestellingAddUpdate');
+Route::get('/deleteBestelling/{id}', 'bestellingenController@deleteBestelling');
+
+Route::get('/klant/{id}/edit', 'klantController@klantEdit');
+Route::post('updateKlant/{id}', 'klantController@klantAddUpdate');
+Route::get('/deleteKlant/{id}', 'klantController@deleteKlant');
+
+Route::get('showKlant/deleteKlant/{id}', 'klantController@deleteKlantInduv');
+Route::get('showKlant/{id}', 'klantController@showKlant');
+
+Route::post('showKlant/date/{$id}', 'klantController@showKlantDate');
+Route::get('showKlant/date/{$id}', 'klantController@showKlantDate');
+
+
+Route::resource('productCRUD','productCRUDcontroller');
+Route::resource('bestellingen', 'bestellingenController');
+Route::resource('klant', 'klantController');
+
+Route::post('create', 'productCRUDcontroller@create');
+Route::post('createBestelling', 'bestellingenController@createBestelling');
+Route::post('createKlant', 'klantController@createKlant');
+
 
 
 /*
