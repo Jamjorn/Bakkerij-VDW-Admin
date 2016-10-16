@@ -28,14 +28,9 @@ $(document).ready(function(){
     
     <table class="table table-bordered">
         <tr>
-            <th>RouteNR.</th>
-            <th>KlantNR.</th>
-            <th>Produkt</th>
-            <th>ProduktNR.</th>
-            <th>Aantal</th>
+        
             <th>Totaalprijs</th>
-            <th>Afhaaldatum</th>
-            <th>Opmerkingen</th>
+ 
             <th>Vastebestelling</th>
             <th>Vastebestellingdag</th>
             <th>prijsprodukt</th>

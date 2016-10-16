@@ -46,8 +46,8 @@ $(document).ready(function(){
         </tr>
     @foreach ($bestellingen as $bestelling)
     <tr>
-        <td>{{ $bestelling->Routenummer}}</td>
-        <td><a class="btn btn-info" href="{{ route('productCRUD.show',$bestelling->bestelnummer) }}">{{ $bestelling->Klantnummer}}</a></td>
+        <td>{{ $bestelling->Routenummer}}</td>      
+        <td><a class="btn btn-info" href="<?php echo '/showKlant/'. $bestelling->KlantId  ?>">{{ $bestelling->KlantId}}</a></td>
         <td>{{ $bestelling->Produkt}}</td>
         <td><a class="btn btn-info" href="{{ route('productCRUD.show',$bestelling->bestelnummer) }}">{{ $bestelling->Produktnummer}}</a></td>
         <td>{{ $bestelling->Hoeveelheid}}</td>

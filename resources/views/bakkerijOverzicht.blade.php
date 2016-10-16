@@ -14,58 +14,16 @@
  <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Klant details</h2>
+                <h2>BakkerijTotaal</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="/klant">Back</a>
             </div>
         </div>
     </div>
-    <?php if(isset($klant)){ ?>
-    <table class="table table-bordered">
-        <tr>
-            <th>Klantnummer.</th>
-            <th>Achternaam.</th>
-            <th>Voorletters</th>
-            <th>Voorvoegsel.</th>
-            <th>Adres</th>
-            <th>Postcode</th>
-            <th>Plaats</th>
-            <th>Telefoonnummer</th>
-            <th>Korting</th>
-            <th>Volgnummer</th>
-            <th></th>
-
-        </tr>
-
-    <tr>
-        
-       
-        <td>{{ $klant->KlantId}}</td>
-        <td>{{ $klant->Achternaam}}</td>
-        <td>{{ $klant->Voorletters}}</td>
-        <td>{{ $klant->Voorvoegsel}}</td>
-        <td>{{ $klant->Adres}}</td>
-        <td>{{ $klant->Postcode}}</td>
-        <td>{{ $klant->Plaats}}</td>
-        <td>{{ $klant->Telefoonnummer}}</td>
-        <td>{{ $klant->Korting}}</td>
-        <td>{{ $klant->Volgnummer}}</td>
-  
-
-        <td>    
-        
-            <a class="btn btn-primary" href="{{ route('klant.edit',$klant->KlantId) }}">Edit</a>
-            <a class="btn btn-danger" href="<?php echo 'deleteKlant/'. $klant->KlantId  ?>">Delete</a>
-         
-        </td>
-
-
-      
-    </tr>
    
-    </table>
-    <form action="/date/{{ $klant->KlantId}}" role="form" method="POST">
+   
+    <form action="/bakkerijOverzicht" role="form" method="POST">
     <input type="text" class="daterange" id="datepicker" name="datepicker" />
 <input type="hidden" name="to" id="to" value="">
 <input type="hidden" name="from" id="from" value="">
@@ -131,51 +89,42 @@ $('#datepicker').daterangepicker({
   <input type="submit" value="Verzenden" name="submit">
 </form>
  <table class="table table-bordered">
-<tr>
-            <th>KlantId.</th>
-            <th>Produkt.</th>
-            <th>Produktnummer</th>
-            <th>Hoeveelheid.</th>
+        <tr>
+            <th>KlantNR.</th>
+            <th>Produkt</th>
+            <th>ProduktNR.</th>
+            <th>Aantal</th>
             <th>Totaalprijs</th>
             <th>Afhaaldatum</th>
-            <th>Opmerking</th>
+            <th>Vastebestelling</th>
+            <th>prijsprodukt</th>
             <th>Betaald</th>
-         
         </tr>
-<?php 
-$totaal = 0;
+        <?php $totaal = 0; ?>
+@foreach ($row as $r)
+    <tr>
+       <td>{{ $r->KlantId}}</td>
+        <td>{{$r->Produkt}}</td>
+        <td>{{ $r->Produktnummer}}</td>
+        <td>{{ $r->Hoeveelheid}}</td>
+        <td>{{ $r->Totaalprijs}}</td>
+        <td>{{ $r->Afhaaldatum}}</td>
+        <td>{{ $r->Vastebestelling}}</td>
+        <td>{{ $r->prijsprodukt}}</td>
+        <td>{{ $r->Betaald}}</td>
 
-    if(isset($row)){    ?>
-            @foreach ($row as $r)
-            <tr>
-<td>{{ $r->KlantId}}</td>
-<td>{{ $r->Produkt}}</td>
-<td>{{ $r->Produktnummer}}</td>
-<td>{{ $r->Hoeveelheid}}</td>
-<td>{{ $r->Totaalprijs}}</td>  
-<td>{{ $r->Afhaaldatum}}</td>
-<td>{{ $r->Opmerkingen}}</td>
-<td>{{ $r->Betaald}}</td>
-</tr>
+            <?php
+            
+              $totaal += $r->Totaalprijs
+             ?>
+
+      
+    </tr>
+    @endforeach
+    <td>Totaalbedrag tussen <?php echo $start.  "  en   " .$end.  "   =" .$totaal; ?></td>
 
 
- <?php $totaal += $r->Totaalprijs  ?>
 
-    @endforeach<?php
-
-?>
-<tr>
-           
-            <th>Totaalprijs <?php echo $totaal ?> </th>
-         
-        </tr>
-        <?php
-
-    }
-?>
-
-</table>
- <?php }else echo "Klant is verwijderd uit het systeem" ?>
   </div>
 
 

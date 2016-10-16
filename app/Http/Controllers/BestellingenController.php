@@ -25,6 +25,8 @@ class BestellingenController extends BaseController
 {
     
 public function index(Request $request)
+
+
     {
         $bestellingen = DB::table('bestellingen2_raamsdonk')->orderBy('bestelnummer')->paginate(7);
         return view('bestellingen',compact('bestellingen'))
@@ -36,7 +38,7 @@ public function index(Request $request)
     public function createBestelling()
     {
   $Routenummer = Input::get('Routenummer');
-  $Klantnummer = Input::get('Klantnummer');  
+  $Klantnummer = Input::get('KlantId');  
   $Produkt = Input::get('Produkt');  
   $Produktnummer = Input::get('Produktnummer');  
   $Hoeveelheid = Input::get('Hoeveelheid');  
@@ -55,7 +57,7 @@ public function index(Request $request)
             DB::table('bestellingen2_raamsdonk') ->insert
            (
             ['Routenummer' => $Routenummer,
-            'Klantnummer' => $Klantnummer,
+            'Klantnummer' => $KlantId,
             'Produkt' => $Produkt,
             'Produktnummer' => $Produktnummer,
             'Hoeveelheid' => $Hoeveelheid,
@@ -130,7 +132,7 @@ public function bestellingEdit($id){
     DB::table('bestellingen2_raamsdonk')
             ->where('bestelnummer', $id)
             ->update(['Routenummer' => $Routenummer,
-            'Klantnummer' => $Klantnummer,
+            'KlantId' => $Klantnummer,
             'Produkt' => $Produkt,
             'Produktnummer' => $Produktnummer,
             'Hoeveelheid' => $Hoeveelheid,

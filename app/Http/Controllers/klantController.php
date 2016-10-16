@@ -35,10 +35,14 @@ public function index(Request $request)
 public function showKlant($id)
 {
 
-
+if($klant = DB::table('klanten_raamsdonk')->where('KlantId', $id) ->first())
+{
 
   $klant = DB::table('klanten_raamsdonk')->where('KlantId', $id) ->first();
     return view('showKlant')->with('klant', $klant);
+}
+return view('showKlant');
+  
 
 }
 
@@ -159,6 +163,25 @@ public function klantEdit($id){
 
     //return view('productAanpassen')->with('row', $row)
    return redirect()->back()->with('row', $row);
+}
+
+public function showDates($id){
+ $start = Input::get('to');
+  $end = Input::get('from');
+  $date = $_POST['datepicker'];
+
+$row = DB::table('bestellingen2_raamsdonk')
+            ->where('KlantId', $id)
+            ->whereBetween('Afhaaldatum',[$start,$end])->get();
+            
+
+  
+
+  $klant = DB::table('klanten_raamsdonk')->where('KlantId', $id) ->first();
+
+
+  return view('/showKlant', compact('row', 'klant'));
+
 }
 
 

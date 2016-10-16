@@ -114,6 +114,14 @@ Route::get('printpreviewBig', function () {
 Route::get('productCRUD/create', function () {
     return view('productCRUD');
 });
+
+Route::get('ShopRoute', function () {
+    return view('ShopRoute');
+});
+Route::get('bakkerijOverzicht', function () {
+    return view('bakkerijOverzicht');
+});
+
 Route::get('/productCRUD/{id}/edit', 'productCRUDcontroller@edit');
 Route::post('/updateCRUD/{id}', 'productCRUDcontroller@addUpdate');
 Route::get('/deleteCrud/{id}', 'productCRUDcontroller@deleteCrud');
@@ -136,10 +144,19 @@ Route::get('showKlant/date/{$id}', 'klantController@showKlantDate');
 Route::resource('productCRUD','productCRUDcontroller');
 Route::resource('bestellingen', 'bestellingenController');
 Route::resource('klant', 'klantController');
+Route::resource('ShopRoute', 'RouteController');
+Route::post('bakkerijOverzicht', 'BakkerijOverzichtController@getDates');
+Route::post('ShopRoute', 'RouteController@populate');
+Route::post('showRouteDetails', 'RouteController@showRouteDetails');
 
 Route::post('create', 'productCRUDcontroller@create');
 Route::post('createBestelling', 'bestellingenController@createBestelling');
 Route::post('createKlant', 'klantController@createKlant');
+
+
+Route::post('date/{id}', 'klantController@showDates');
+Route::get('date/{id}', 'klantController@showDates');
+Route::post('/bakkerijOverzicht', 'BakkerijOverzichtController@getDates');
 
 
 

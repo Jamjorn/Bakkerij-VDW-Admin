@@ -19,7 +19,7 @@
     <form action="/updateBestelling/{{ $row->bestelnummer }}" role="form" method='post'><br>
 
     <input name='Routenummer' type ='number' placeholder ="routenummer" value="{{ $row->Routenummer }}"  required><br>
-    <input name='Klantnummer' type ='number' placeholder ="Klantnummer" value="{{ $row->Klantnummer }}"   required><br>
+    <input name='Klantnummer' type ='number' placeholder ="Klantnummer" value="{{ $row->KlantId }}"   required><br>
     <input name='Produkt' type ='tekst' placeholder ="Produkt" class="biginput" id="produkt" value="{{ $row->Produkt }}"  required ><br>
     <input name='Produktnummer' type ='number' placeholder ="Produktnummer" value="{{ $row->Produktnummer }}"   required min="0" ><br>
     <input name='Hoeveelheid' type ='number' placeholder ="Hoeveelheid" value="{{ $row->Hoeveelheid }}"   required min="0"><br>
