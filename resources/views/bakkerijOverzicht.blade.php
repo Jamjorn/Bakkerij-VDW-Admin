@@ -100,7 +100,9 @@ $('#datepicker').daterangepicker({
             <th>prijsprodukt</th>
             <th>Betaald</th>
         </tr>
-        <?php $totaal = 0; ?>
+        <?php $totaal = 0;
+        if(isset($row)){
+         ?>
 @foreach ($row as $r)
     <tr>
        <td>{{ $r->KlantId}}</td>
@@ -123,7 +125,7 @@ $('#datepicker').daterangepicker({
     @endforeach
     <td>Totaalbedrag tussen <?php echo $start.  "  en   " .$end.  "   =" .$totaal; ?></td>
 
-
+    <?php }?>
 
   </div>
 
